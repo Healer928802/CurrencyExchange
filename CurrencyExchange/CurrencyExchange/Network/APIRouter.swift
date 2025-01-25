@@ -39,7 +39,12 @@ extension APIRouter {
         urlRequest = try URLRequest(url: url, method: method)
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         urlRequest.setValue(ContentType.textPlain.rawValue, forHTTPHeaderField: HTTPHeaderField.accept.rawValue)
-        urlRequest.setValue("ApiKey ", forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
+        
+        guard let apiKey = KeychainManager.shared.retrieveSwopKey() else {
+            throw AFError.explicitlyCancelled
+        }
+                
+        urlRequest.setValue("ApiKey \(apiKey)", forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
         
         if let parameters = parameters {
             do {

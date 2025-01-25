@@ -20,6 +20,7 @@ final class AppCoordinator: Coordinator {
     func start() {
         let viewModel = CurrencyListViewModel(apiClient: apiClient)
         let vc = CurrencyListViewController(viewModel: viewModel)
+            vc.title = "Currency Exchange List"
             vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

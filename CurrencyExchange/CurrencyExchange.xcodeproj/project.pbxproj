@@ -22,6 +22,10 @@
 		3A9781792D44F4FB0019ED04 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781782D44F4FB0019ED04 /* APIRouter.swift */; };
 		3A97817B2D44F5030019ED04 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97817A2D44F5030019ED04 /* APIConstants.swift */; };
 		3A97817D2D44FAAC0019ED04 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97817C2D44FAAC0019ED04 /* CurrencyListViewModel.swift */; };
+		3A9781812D452DF80019ED04 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781802D452DF80019ED04 /* KeychainManager.swift */; };
+		3A9781842D45302B0019ED04 /* CurrencyRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781832D45302B0019ED04 /* CurrencyRateModel.swift */; };
+		3A9781872D4531320019ED04 /* CellSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781862D4531320019ED04 /* CellSetupController.swift */; };
+		3A9781892D4531A70019ED04 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781882D4531A70019ED04 /* BaseTableView.swift */; };
 		9A71A50D11F555BD7EFB00C6 /* Pods_CurrencyExchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 538DC9EEFAA97858C49EF4EE /* Pods_CurrencyExchange.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,10 @@
 		3A9781782D44F4FB0019ED04 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		3A97817A2D44F5030019ED04 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		3A97817C2D44FAAC0019ED04 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
+		3A9781802D452DF80019ED04 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		3A9781832D45302B0019ED04 /* CurrencyRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateModel.swift; sourceTree = "<group>"; };
+		3A9781862D4531320019ED04 /* CellSetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSetupController.swift; sourceTree = "<group>"; };
+		3A9781882D4531A70019ED04 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		538DC9EEFAA97858C49EF4EE /* Pods_CurrencyExchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CurrencyExchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		937D30986C81529617435EFA /* Pods-CurrencyExchange.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyExchange.release.xcconfig"; path = "Target Support Files/Pods-CurrencyExchange/Pods-CurrencyExchange.release.xcconfig"; sourceTree = "<group>"; };
 		EEF8F46E431831E0E6B706FB /* Pods-CurrencyExchange.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyExchange.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyExchange/Pods-CurrencyExchange.debug.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +89,7 @@
 		3A9781572D44E99E0019ED04 /* CurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
+				3A97817F2D452DEC0019ED04 /* Managers */,
 				3A9781632D44EEA80019ED04 /* Coordinator */,
 				3A9781612D44EE840019ED04 /* Network */,
 				3A9781602D44EE810019ED04 /* UI */,
@@ -133,6 +142,7 @@
 		3A9781692D44F0890019ED04 /* CurrencyList */ = {
 			isa = PBXGroup;
 			children = (
+				3A9781822D45301D0019ED04 /* Model */,
 				3A97816B2D44F0D70019ED04 /* CurrencyListViewController.swift */,
 				3A97816F2D44F2B70019ED04 /* CurrencyListView.swift */,
 				3A97817C2D44FAAC0019ED04 /* CurrencyListViewModel.swift */,
@@ -153,8 +163,42 @@
 			isa = PBXGroup;
 			children = (
 				3A9781722D44F3280019ED04 /* BaseView.swift */,
+				3A9781882D4531A70019ED04 /* BaseTableView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		3A97817E2D452DE60019ED04 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				3A9781802D452DF80019ED04 /* KeychainManager.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		3A97817F2D452DEC0019ED04 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3A9781852D4530F80019ED04 /* CellSetupController */,
+				3A97817E2D452DE60019ED04 /* Keychain */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		3A9781822D45301D0019ED04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A9781832D45302B0019ED04 /* CurrencyRateModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3A9781852D4530F80019ED04 /* CellSetupController */ = {
+			isa = PBXGroup;
+			children = (
+				3A9781862D4531320019ED04 /* CellSetupController.swift */,
+			);
+			path = CellSetupController;
 			sourceTree = "<group>";
 		};
 		6C04C02A33D45CA24B079E80 /* Frameworks */ = {
@@ -294,9 +338,13 @@
 				3A9781702D44F2B70019ED04 /* CurrencyListView.swift in Sources */,
 				3A9781772D44F4F50019ED04 /* APIClient.swift in Sources */,
 				3A97815C2D44E99E0019ED04 /* AppDelegate.swift in Sources */,
+				3A9781892D4531A70019ED04 /* BaseTableView.swift in Sources */,
 				3A97815D2D44E99E0019ED04 /* SceneDelegate.swift in Sources */,
 				3A97816E2D44F0EB0019ED04 /* FavoritesViewController.swift in Sources */,
+				3A9781842D45302B0019ED04 /* CurrencyRateModel.swift in Sources */,
+				3A9781872D4531320019ED04 /* CellSetupController.swift in Sources */,
 				3A9781792D44F4FB0019ED04 /* APIRouter.swift in Sources */,
+				3A9781812D452DF80019ED04 /* KeychainManager.swift in Sources */,
 				3A97817B2D44F5030019ED04 /* APIConstants.swift in Sources */,
 				3A9781662D44EF740019ED04 /* Coordinator.swift in Sources */,
 				3A9781732D44F3280019ED04 /* BaseView.swift in Sources */,
@@ -327,6 +375,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D546Q3YH5F;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyExchange/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Currency Exchange";
@@ -358,6 +407,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D546Q3YH5F;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyExchange/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Currency Exchange";

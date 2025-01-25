@@ -9,5 +9,6 @@ target 'CurrencyExchange' do
 
   pod 'SnapKit', '~> 5.7.0'
   pod 'Alamofire'
+  pod 'KeychainSwift', '~> 24.0'
 
 end

@@ -13,4 +13,11 @@ final class CurrencyListViewModel {
     init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient
     }
+    
+    func loadCurrencyRates() {
+        Task {
+            let result = try await apiClient.asyncRequest(router: APIRouter.rates, response: [CurrencyRateModel].self)
+            debugPrint(result)
+        }
+    }
 }

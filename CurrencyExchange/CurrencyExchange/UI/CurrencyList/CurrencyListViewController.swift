@@ -30,5 +30,7 @@ final class CurrencyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.loadCurrencyRates()
     }
 }
