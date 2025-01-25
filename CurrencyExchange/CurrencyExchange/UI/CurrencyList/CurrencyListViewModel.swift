@@ -10,14 +10,21 @@ import Foundation
 final class CurrencyListViewModel {
     private let apiClient: APIClientProtocol
     
+    private(set) var currencyRates: [CurrencyRateModel] = []
+    
+    weak var delegate: ReloadDataProtocol?
+    
     init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient
     }
     
     func loadCurrencyRates() {
         Task {
-            let result = try await apiClient.asyncRequest(router: APIRouter.rates, response: [CurrencyRateModel].self)
-            debugPrint(result)
+            currencyRates = try await apiClient.asyncRequest(router: APIRouter.rates, response: [CurrencyRateModel].self)
+            
+            await MainActor.run {
+                delegate?.reloadData()
+            }
         }
     }
 }

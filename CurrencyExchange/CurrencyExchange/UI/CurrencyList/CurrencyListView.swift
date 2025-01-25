@@ -11,12 +11,14 @@ import SnapKit
 final class CurrencyListView: BaseView {
     lazy var tableView: BaseTableView = {
         let tableView = BaseTableView()
-        tableView.backgroundColor = .red
+            tableView.registerFromNib(CurrencyCell.self)
         return tableView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -24,6 +26,10 @@ final class CurrencyListView: BaseView {
     }
     
     private func setupConstraints() {
+        addSubview(tableView)
         
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
