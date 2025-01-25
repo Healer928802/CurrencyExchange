@@ -11,6 +11,13 @@
 		3A97815A2D44E99E0019ED04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A9781522D44E99E0019ED04 /* LaunchScreen.storyboard */; };
 		3A97815C2D44E99E0019ED04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97814E2D44E99E0019ED04 /* AppDelegate.swift */; };
 		3A97815D2D44E99E0019ED04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781552D44E99E0019ED04 /* SceneDelegate.swift */; };
+		3A9781662D44EF740019ED04 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781652D44EF740019ED04 /* Coordinator.swift */; };
+		3A9781682D44EFC40019ED04 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781672D44EFC40019ED04 /* AppCoordinator.swift */; };
+		3A97816C2D44F0D70019ED04 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97816B2D44F0D70019ED04 /* CurrencyListViewController.swift */; };
+		3A97816E2D44F0EB0019ED04 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97816D2D44F0EB0019ED04 /* FavoritesViewController.swift */; };
+		3A9781702D44F2B70019ED04 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97816F2D44F2B70019ED04 /* CurrencyListView.swift */; };
+		3A9781732D44F3280019ED04 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781722D44F3280019ED04 /* BaseView.swift */; };
+		3A9781752D44F3C40019ED04 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9781742D44F3C40019ED04 /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +27,13 @@
 		3A9781502D44E99E0019ED04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A9781512D44E99E0019ED04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A9781552D44E99E0019ED04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3A9781652D44EF740019ED04 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		3A9781672D44EFC40019ED04 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		3A97816B2D44F0D70019ED04 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
+		3A97816D2D44F0EB0019ED04 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		3A97816F2D44F2B70019ED04 /* CurrencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListView.swift; sourceTree = "<group>"; };
+		3A9781722D44F3280019ED04 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		3A9781742D44F3C40019ED04 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +89,9 @@
 		3A9781602D44EE810019ED04 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3A9781712D44F3200019ED04 /* Base */,
+				3A97816A2D44F09A0019ED04 /* Favorites */,
+				3A9781692D44F0890019ED04 /* CurrencyList */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -97,8 +114,36 @@
 		3A9781632D44EEA80019ED04 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				3A9781652D44EF740019ED04 /* Coordinator.swift */,
+				3A9781672D44EFC40019ED04 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3A9781692D44F0890019ED04 /* CurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				3A97816B2D44F0D70019ED04 /* CurrencyListViewController.swift */,
+				3A97816F2D44F2B70019ED04 /* CurrencyListView.swift */,
+			);
+			path = CurrencyList;
+			sourceTree = "<group>";
+		};
+		3A97816A2D44F09A0019ED04 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				3A97816D2D44F0EB0019ED04 /* FavoritesViewController.swift */,
+				3A9781742D44F3C40019ED04 /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		3A9781712D44F3200019ED04 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3A9781722D44F3280019ED04 /* BaseView.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +219,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A97816C2D44F0D70019ED04 /* CurrencyListViewController.swift in Sources */,
+				3A9781682D44EFC40019ED04 /* AppCoordinator.swift in Sources */,
+				3A9781702D44F2B70019ED04 /* CurrencyListView.swift in Sources */,
 				3A97815C2D44E99E0019ED04 /* AppDelegate.swift in Sources */,
 				3A97815D2D44E99E0019ED04 /* SceneDelegate.swift in Sources */,
+				3A97816E2D44F0EB0019ED04 /* FavoritesViewController.swift in Sources */,
+				3A9781662D44EF740019ED04 /* Coordinator.swift in Sources */,
+				3A9781732D44F3280019ED04 /* BaseView.swift in Sources */,
+				3A9781752D44F3C40019ED04 /* FavoritesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,16 +255,18 @@
 				DEVELOPMENT_TEAM = D546Q3YH5F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyExchange/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Currency Exchange";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.healer.CurrencyExchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -231,16 +285,18 @@
 				DEVELOPMENT_TEAM = D546Q3YH5F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CurrencyExchange/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Currency Exchange";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.healer.CurrencyExchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
