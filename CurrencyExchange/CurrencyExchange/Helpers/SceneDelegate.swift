@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     private var coordinator: AppCoordinator?
+    private let apiClient: APIClientProtocol = APIClient()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -22,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
             navigationController.navigationBar.prefersLargeTitles = false
         
-        coordinator = AppCoordinator(navigationController: navigationController)
+        coordinator = AppCoordinator(navigationController: navigationController, apiClient: apiClient)
         coordinator?.start()
         
         window = appWindow

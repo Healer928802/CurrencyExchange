@@ -10,12 +10,16 @@ import UIKit
 final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    private let apiClient: APIClientProtocol
+    
+    init(navigationController: UINavigationController, apiClient: APIClientProtocol) {
         self.navigationController = navigationController
+        self.apiClient = apiClient
     }
     
     func start() {
-        let vc = CurrencyListViewController()
+        let viewModel = CurrencyListViewModel(apiClient: apiClient)
+        let vc = CurrencyListViewController(viewModel: viewModel)
             vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
