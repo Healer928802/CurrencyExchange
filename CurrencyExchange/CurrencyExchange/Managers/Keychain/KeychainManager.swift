@@ -28,7 +28,7 @@ final class KeychainManager {
         return swopKey
     }
     
-    func storeRates(_ rates: [CurrencyRateModel]) async {
+    func storeRates(_ rates: [CurrencyRateTransformed]) async {
         if let encodedData = try? encoder.encode(rates) {
             keychainSwift.set(encodedData, forKey: Keys.rates.rawValue)
         } else {
@@ -36,10 +36,10 @@ final class KeychainManager {
         }
     }
     
-    func retrieveRates() async -> [CurrencyRateModel] {
+    func retrieveRates() async -> [CurrencyRateTransformed] {
         if let result = keychainSwift.getData(Keys.rates.rawValue) {
             do {
-                let decodedData = try decoder.decode([CurrencyRateModel].self, from: result)
+                let decodedData = try decoder.decode([CurrencyRateTransformed].self, from: result)
                 return decodedData
             } catch {
                 debugPrint("Decode data failed")

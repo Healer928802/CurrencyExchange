@@ -22,6 +22,8 @@ final class CurrencyCell: UITableViewCell {
         }
     }
     
+    var indexPath: IndexPath?
+    
     var action: FavoritesAction?
     
     private func updateCell(with cellViewModel: CurrencyCellViewModel) {
@@ -33,6 +35,8 @@ final class CurrencyCell: UITableViewCell {
         let favoritesImage = cellViewModel.isSelected ? "heart.fill" : "heart"
         favoritesButton.setImage(UIImage(systemName: favoritesImage), for: .normal)
         favoritesButton.tag = cellViewModel.isSelected ? 1 : 0
+        
+        indexPath = cellViewModel.indexPath
     }
     
     override func awakeFromNib() {
@@ -48,6 +52,18 @@ final class CurrencyCell: UITableViewCell {
     }
     
     @IBAction private func favoritesClicked(_ sender: UIButton) {
-        action?(FavoritesEnum(rawValue: sender.tag) ?? .unowned)
+        guard let indexPath = indexPath else {
+            debugPrint("IndexPath not identified")
+            return
+        }
+        
+        switch sender.tag {
+        case 0:
+            action?(.add(index: indexPath))
+        case 1:
+            action?(.remove(index: indexPath))
+        default:
+            action?(.unowned)
+        }
     }
 }

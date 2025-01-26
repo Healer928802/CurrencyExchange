@@ -11,7 +11,6 @@ import SnapKit
 final class CurrencyListView: BaseView {
     lazy var tableView: BaseTableView = {
         let tableView = BaseTableView()
-            tableView.registerFromNib(CurrencyCell.self)
         return tableView
     }()
     

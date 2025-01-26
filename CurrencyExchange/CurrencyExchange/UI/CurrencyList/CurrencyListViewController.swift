@@ -54,6 +54,7 @@ extension CurrencyListViewController: ReloadDataProtocol {
         
         switch state {
         case .success, .noConnection:
+            currencyListView.tableView.registerFromNib(CurrencyCell.self)
             cellSetupController.append(CurrencySetupCell(rates: viewModel.currencyRates, action: handleFavoritesAction()))
         case .noRatesStored:
             currencyListView.tableView.registerFromNib(CurrencyListEmptyCell.self)
@@ -68,10 +69,10 @@ extension CurrencyListViewController: ReloadDataProtocol {
     private func handleFavoritesAction() -> FavoritesAction? {
         return { [weak self] result in
             switch result {
-            case .add:
-                print("Add")
-            case .remove:
-                print("Remove")
+            case .add(let index):
+                self?.currencyListView.tableView.reloadRows(at: [index], with: .automatic)
+            case .remove(let index):
+                self?.currencyListView.tableView.reloadRows(at: [index], with: .automatic)
             case .unowned:
                 break
             }

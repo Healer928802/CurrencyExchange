@@ -11,7 +11,7 @@ struct CurrencyListEmptySetupCell: TableCellSetupController {
     let state: ReloadStates
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        tableView.bounds.size.height
+        tableView.bounds.size.height - 125
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -8,7 +8,7 @@
 import UIKit
 
 struct CurrencySetupCell: TableCellSetupController {
-    let rates: [CurrencyRateModel]
+    let rates: [CurrencyRateTransformed]
     
     var action: FavoritesAction?
     
@@ -21,11 +21,12 @@ struct CurrencySetupCell: TableCellSetupController {
         let result = rates[indexPath.row]
         cell.action = action
         cell.cellViewModel = CurrencyCellViewModel(
-            value: "\(result.quote)",
+            value: result.quote,
             baseCode: result.baseCurrency,
             quoteCode: result.quoteCurrency,
-            isSelected: false,
-            date: result.date
+            isSelected: result.isSelected,
+            date: result.date,
+            indexPath: indexPath
         )
         return cell
     }

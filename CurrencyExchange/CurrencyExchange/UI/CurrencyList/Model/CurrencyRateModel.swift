@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyRateModel: Codable {
+struct CurrencyRateModel: Decodable {
     let baseCurrency: String
     let quoteCurrency: String
     let quote: Double
@@ -18,4 +18,12 @@ struct CurrencyRateModel: Codable {
         case quoteCurrency = "quote_currency"
         case quote, date
     }
+}
+
+struct CurrencyRateTransformed: Codable {
+    let baseCurrency: String
+    let quoteCurrency: String
+    let quote: String
+    let date: String
+    let isSelected: Bool
 }

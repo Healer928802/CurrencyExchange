@@ -11,7 +11,7 @@ final class CurrencyListViewModel {
     private let apiClient: APIClientProtocol
     private let keychainManager: KeychainManager
     
-    private(set) var currencyRates: [CurrencyRateModel] = []
+    private(set) var currencyRates: [CurrencyRateTransformed] = []
     
     weak var delegate: ReloadDataProtocol?
     
@@ -23,7 +23,18 @@ final class CurrencyListViewModel {
     func loadCurrencyRates() {
         Task {
             do {
-                currencyRates = try await apiClient.asyncRequest(router: APIRouter.rates, response: [CurrencyRateModel].self)
+                let result = try await apiClient.asyncRequest(router: APIRouter.rates, response: [CurrencyRateModel].self)
+                
+                currencyRates = result.map { value in
+                    CurrencyRateTransformed(
+                        baseCurrency: value.baseCurrency,
+                        quoteCurrency: value.quoteCurrency,
+                        quote: "\(value.quote)",
+                        date: value.date,
+                        isSelected: false
+                    )
+                }
+                
                 await keychainManager.storeRates(currencyRates)
                 
                 await MainActor.run {
