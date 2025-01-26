@@ -23,6 +23,7 @@ final class CurrencyCell: UITableViewCell {
     }
     
     var indexPath: IndexPath?
+    var currencyRate: CurrencyRateTransformed = CurrencyRateTransformed(baseCurrency: "", quoteCurrency: "", quote: "", date: "", isSelected: false)
     
     var action: FavoritesAction?
     
@@ -35,8 +36,6 @@ final class CurrencyCell: UITableViewCell {
         let favoritesImage = cellViewModel.isSelected ? "heart.fill" : "heart"
         favoritesButton.setImage(UIImage(systemName: favoritesImage), for: .normal)
         favoritesButton.tag = cellViewModel.isSelected ? 1 : 0
-        
-        indexPath = cellViewModel.indexPath
     }
     
     override func awakeFromNib() {
@@ -59,9 +58,11 @@ final class CurrencyCell: UITableViewCell {
         
         switch sender.tag {
         case 0:
-            action?(.add(index: indexPath))
+            currencyRate.isSelected = true
+            action?(.add(index: indexPath, object: currencyRate))
         case 1:
-            action?(.remove(index: indexPath))
+            currencyRate.isSelected = false
+            action?(.remove(index: indexPath, object: currencyRate))
         default:
             action?(.unowned)
         }

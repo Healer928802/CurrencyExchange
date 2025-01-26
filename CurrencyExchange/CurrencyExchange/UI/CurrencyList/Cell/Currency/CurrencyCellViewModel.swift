@@ -15,14 +15,12 @@ final class CurrencyCellViewModel: CurrencyCellViewModelProtocol {
     var quoteCode: String
     var isSelected: Bool
     var date: String
-    var indexPath: IndexPath
     
-    init(value: String, baseCode: String, quoteCode: String, isSelected: Bool, date: String, indexPath: IndexPath) {
+    init(value: String, baseCode: String, quoteCode: String, isSelected: Bool, date: String) {
         self.value = value
         self.baseCode = baseCode
         self.quoteCode = quoteCode
         self.isSelected = isSelected
         self.date = date
-        self.indexPath = indexPath
     }
 }

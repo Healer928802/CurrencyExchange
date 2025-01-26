@@ -27,8 +27,10 @@ final class AppCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showFavorites() {
-        let vc = FavoritesViewController()
+    func showFavorites(with currencyRates: [CurrencyRateTransformed]) {
+        let viewModel = FavoritsViewModel(keychainManager: keychainManager, currencyRates: currencyRates)
+        let vc = FavoritesViewController(viewModel: viewModel)
+            vc.title = "Favorite Rates"
         navigationController.pushViewController(vc, animated: true)
     }
 }

@@ -20,13 +20,14 @@ struct CurrencySetupCell: TableCellSetupController {
         let cell = tableView.dequeue(CurrencyCell.self, forIndexPath: indexPath)
         let result = rates[indexPath.row]
         cell.action = action
+        cell.currencyRate = result
+        cell.indexPath = indexPath
         cell.cellViewModel = CurrencyCellViewModel(
             value: result.quote,
             baseCode: result.baseCurrency,
             quoteCode: result.quoteCurrency,
             isSelected: result.isSelected,
-            date: result.date,
-            indexPath: indexPath
+            date: result.date
         )
         return cell
     }

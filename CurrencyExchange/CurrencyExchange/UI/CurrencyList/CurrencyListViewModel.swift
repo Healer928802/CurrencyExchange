@@ -9,9 +9,10 @@ import Foundation
 
 final class CurrencyListViewModel {
     private let apiClient: APIClientProtocol
-    private let keychainManager: KeychainManager
+    let keychainManager: KeychainManager
     
-    private(set) var currencyRates: [CurrencyRateTransformed] = []
+    var currencyRates: [CurrencyRateTransformed] = []
+    var favoriteCurrencyRates: [CurrencyRateTransformed] = []
     
     weak var delegate: ReloadDataProtocol?
     
@@ -25,17 +26,23 @@ final class CurrencyListViewModel {
             do {
                 let result = try await apiClient.asyncRequest(router: APIRouter.rates, response: [CurrencyRateModel].self)
                 
+                favoriteCurrencyRates = await keychainManager.retrieveFavoriteRates()
+                
                 currencyRates = result.map { value in
-                    CurrencyRateTransformed(
+                    let isFavorite = favoriteCurrencyRates.contains(where: {
+                        $0.baseCurrency == value.baseCurrency && $0.quoteCurrency == value.quoteCurrency
+                    })
+                    
+                    return CurrencyRateTransformed(
                         baseCurrency: value.baseCurrency,
                         quoteCurrency: value.quoteCurrency,
                         quote: "\(value.quote)",
                         date: value.date,
-                        isSelected: false
+                        isSelected: isFavorite
                     )
                 }
                 
-                await keychainManager.storeRates(currencyRates)
+                keychainManager.storeRates(currencyRates, with: .rates)
                 
                 await MainActor.run {
                     delegate?.reloadData(with: .success)
@@ -47,6 +54,12 @@ final class CurrencyListViewModel {
                     currencyRates.isEmpty ? delegate?.reloadData(with: .noRatesStored) : delegate?.reloadData(with: .noConnection)
                 }
             }
+        }
+    }
+    
+    func updateFavorites() {
+        Task {
+            favoriteCurrencyRates = await keychainManager.retrieveFavoriteRates()
         }
     }
 }

@@ -6,15 +6,32 @@
 //
 
 import UIKit
+import SnapKit
 
-class BaseView: UIView {
+final class BaseView: UIView {
+    lazy var tableView: BaseTableView = {
+        let tableView = BaseTableView()
+        tableView.registerFromNib(CurrencyCell.self)
+        tableView.registerFromNib(CurrencyListEmptyCell.self)
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .background
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    private func setupConstraints() {
+        addSubview(tableView)
+        
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }

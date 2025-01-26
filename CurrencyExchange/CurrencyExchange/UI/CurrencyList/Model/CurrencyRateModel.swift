@@ -25,5 +25,5 @@ struct CurrencyRateTransformed: Codable {
     let quoteCurrency: String
     let quote: String
     let date: String
-    let isSelected: Bool
+    var isSelected: Bool
 }

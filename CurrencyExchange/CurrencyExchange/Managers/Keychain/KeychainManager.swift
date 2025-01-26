@@ -28,9 +28,9 @@ final class KeychainManager {
         return swopKey
     }
     
-    func storeRates(_ rates: [CurrencyRateTransformed]) async {
+    func storeRates(_ rates: [CurrencyRateTransformed], with key: Keys) {
         if let encodedData = try? encoder.encode(rates) {
-            keychainSwift.set(encodedData, forKey: Keys.rates.rawValue)
+            keychainSwift.set(encodedData, forKey: key.rawValue)
         } else {
             debugPrint("Encode data failed")
         }
@@ -48,11 +48,25 @@ final class KeychainManager {
         
         return []
     }
+    
+    func retrieveFavoriteRates() async -> [CurrencyRateTransformed] {
+        if let result = keychainSwift.getData(Keys.favoriteRates.rawValue) {
+            do {
+                let decodedData = try decoder.decode([CurrencyRateTransformed].self, from: result)
+                return decodedData
+            } catch {
+                debugPrint("Decode favorites data failed")
+            }
+        }
+        
+        return []
+    }
 }
 
 extension KeychainManager {
-    private enum Keys: String {
+    enum Keys: String {
         case apiKey = "API_KEY"
         case rates = "RATES_KEY"
+        case favoriteRates = "FAV_KEY"
     }
 }
