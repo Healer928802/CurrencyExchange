@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
             navigationController.navigationBar.prefersLargeTitles = false
         
-        coordinator = AppCoordinator(navigationController: navigationController, apiClient: apiClient)
+        coordinator = AppCoordinator(navigationController: navigationController, apiClient: apiClient, keychainManager: keychainManager)
         coordinator?.start()
         
         window = appWindow

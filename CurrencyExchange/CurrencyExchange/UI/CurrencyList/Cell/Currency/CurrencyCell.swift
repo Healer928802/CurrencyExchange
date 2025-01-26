@@ -22,6 +22,8 @@ final class CurrencyCell: UITableViewCell {
         }
     }
     
+    var action: FavoritesAction?
+    
     private func updateCell(with cellViewModel: CurrencyCellViewModel) {
         dateLabel.text = cellViewModel.date
         quoteCurrency.text = cellViewModel.quoteCode
@@ -30,6 +32,7 @@ final class CurrencyCell: UITableViewCell {
         
         let favoritesImage = cellViewModel.isSelected ? "heart.fill" : "heart"
         favoritesButton.setImage(UIImage(systemName: favoritesImage), for: .normal)
+        favoritesButton.tag = cellViewModel.isSelected ? 1 : 0
     }
     
     override func awakeFromNib() {
@@ -42,5 +45,9 @@ final class CurrencyCell: UITableViewCell {
         containerView.layer.cornerRadius = 20.0
         containerView.layer.borderWidth = 1.2
         containerView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
+    }
+    
+    @IBAction private func favoritesClicked(_ sender: UIButton) {
+        action?(FavoritesEnum(rawValue: sender.tag) ?? .unowned)
     }
 }

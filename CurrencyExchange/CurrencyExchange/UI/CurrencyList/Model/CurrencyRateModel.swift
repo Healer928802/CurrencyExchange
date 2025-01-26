@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyRateModel: Decodable {
+struct CurrencyRateModel: Codable {
     let baseCurrency: String
     let quoteCurrency: String
     let quote: Double

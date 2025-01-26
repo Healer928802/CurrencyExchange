@@ -48,16 +48,44 @@ final class CurrencyListViewController: UIViewController {
 }
 
 extension CurrencyListViewController: ReloadDataProtocol {
-    func reloadData() {
+    func reloadData(with state: ReloadStates) {
+        currencyListView.tableView.delegate = self
         currencyListView.tableView.dataSource = self
-        cellSetupController.append(CurrencySetupCell(rates: viewModel.currencyRates))
+        
+        switch state {
+        case .success, .noConnection:
+            cellSetupController.append(CurrencySetupCell(rates: viewModel.currencyRates, action: handleFavoritesAction()))
+        case .noRatesStored:
+            currencyListView.tableView.registerFromNib(CurrencyListEmptyCell.self)
+            cellSetupController.append(CurrencyListEmptySetupCell(state: state))
+        case .noFavorites:
+            break
+        }
+        
         currencyListView.tableView.reloadData()
+    }
+    
+    private func handleFavoritesAction() -> FavoritesAction? {
+        return { [weak self] result in
+            switch result {
+            case .add:
+                print("Add")
+            case .remove:
+                print("Remove")
+            case .unowned:
+                break
+            }
+        }
     }
 }
 
-extension CurrencyListViewController: UITableViewDataSource {
+extension CurrencyListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cellSetupController[section].tableView(tableView, numberOfRowsInSection: section)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        cellSetupController[indexPath.section].tableView(tableView, heightForRowAt: indexPath)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
