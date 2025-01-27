@@ -30,6 +30,7 @@ final class BaseView: UIView {
     private func setupConstraints() {
         addSubview(tableView)
         
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

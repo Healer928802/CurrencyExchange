@@ -1,9 +1,9 @@
 # CurrencyExchange
-Test App to track currency exchange rate and manage your favorites || build with UIKit framework.
+Test App to track currency exchange rates and manage your favorites, built with the UIKit framework.
 
-- Clone the repository -> install cocoapods (pod install) -> open .xcworkspace file.
-- MVVM architecture - View displayed currency list, ViewModel - Retrieve data from api or keychain and prepare it for view, Model - Represent the data.
-- Navigation build with coordinator pattern, APIClient and Alamofire library for api requests, Keychain library for secure storing the data, SnapKit to build ui via code.
-- Stores favorite currencies and allList currencies securely in the Keychain, users can access saved rates even without an internet connection, syncs with the server once online.
-- SnapKit, Alamofire, KeychainSwift (explained in 3rd point)
+- Clone the repository -> install CocoaPods (pod install) -> open the .xcworkspace file.
+- MVVM architecture: View displays the currency list, ViewModel retrieves data from the API or Keychain and prepares it for the view, and Model represents the data.
+- Navigation is built with the coordinator pattern. APIClient and the Alamofire library handle API requests, the Keychain library securely stores data, and SnapKit is used to build the UI via code.
+- Stores favorite currencies and all currencies securely in the Keychain. Users can access saved rates even without an internet connection and sync with the server once online.
+- SnapKit, Alamofire, and KeychainSwift (explained in the third point).
 
